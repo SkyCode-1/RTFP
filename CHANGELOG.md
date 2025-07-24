@@ -1,5 +1,11 @@
 # rtfp
 
+## 0.2.1
+
+### Patch Changes
+
+- a4f663c: Change prepush hook and delete default README.md in changeset
+
 ## 0.2.0
 
 ### Minor Changes
