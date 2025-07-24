@@ -1,18 +1,40 @@
 {
   "name": "rtfp",
-  "version": "1.0.0",
-  "main": "dist/index.js",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "build": "tsup",
-    "test": "vitest"
+    "lint": "eslint",
+    "test": "vitest run",
+    "ci:publish": "changeset publish"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
+  "publishConfig": {
+    "provenance": true,
+    "access": "public"
+  },
   "devDependencies": {
+    "@changesets/cli": "^2.29.5",
     "@eslint/js": "^9.20.0",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",

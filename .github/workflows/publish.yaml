@@ -1,0 +1,37 @@
+name: Publish # Название скрипта в GitHub
+on:
+  push:
+    branches:
+      - main # Для какой ветки работает скрипт
+
+concurrency: ${{ github.workflow }}-${{ github.ref }} # Защита от множественных пушей, гитхаб отменит старые пуши и оставит последний
+
+permissions:
+  contents: write # Пуш коммитов
+  pull-requests: write # Создание пулл реквестов
+  packages: write # Публикация в гитхаб
+  id-token: write # OIDC авторизация
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest # Выполнение на ubuntu
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies
+      - run: npm ci
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+         publish: npm run ci:publish
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
