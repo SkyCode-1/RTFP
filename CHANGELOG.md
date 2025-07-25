@@ -1,5 +1,11 @@
 # rtfp
 
+## 0.2.2
+
+### Patch Changes
+
+- 128e6a4: fix error with check changeset in yaml
+
 ## 0.2.1
 
 ### Patch Changes
