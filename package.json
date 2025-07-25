@@ -1,6 +1,6 @@
 {
   "name": "rtfp",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "repository": {
     "type": "git",
@@ -30,7 +30,12 @@
     "test": "vitest run",
     "ci:publish": "changeset publish"
   },
-  "files": ["dist", "package.json", "README.md", "CHANGELOG.md"],
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

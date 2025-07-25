@@ -1,5 +1,12 @@
 # rtfp
 
+## 0.2.3
+
+### Patch Changes
+
+- 863f08c: add new ci script
+- 863f08c: add script for found changes
+
 ## 0.2.2
 
 ### Patch Changes
