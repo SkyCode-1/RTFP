@@ -1,5 +1,11 @@
 # rtfp
 
+## 0.2.4
+
+### Patch Changes
+
+- eeb39c2: delete logs
+
 ## 0.2.3
 
 ### Patch Changes

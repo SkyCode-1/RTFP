@@ -1,5 +1,0 @@
----
-'rtfp': patch
----
-
-delete logs
