@@ -35,10 +35,13 @@ jobs:
       - name: Check for changeset
         id: changeset_status
         run: |
-          if [ "$(npx changeset status --output json | jq '.releases | length')" -eq 0 ]; then
+          RELEASE_COUNT=$(npx changeset status --output=json | jq '.releases | length' || echo 0)
+
+          if [ -z "$RELEASE_COUNT" ] || [ "$RELEASE_COUNT" -eq 0 ]; then
             echo "No changesets found. Skipping versioning."
             echo "skip=true" >> $GITHUB_OUTPUT
           else
+            echo "Found $RELEASE_COUNT changeset(s)."
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
