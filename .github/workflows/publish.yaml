@@ -32,15 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Запуск скрипта проверки Changeset
+      - name: Run Changeset Check Script
         id: check_changes
         run: ./scripts/check-changeset.sh
-
-      - name: Показать текущую директорию и содержимое
-        run: |
-          pwd # Покажет текущую рабочую директорию
-          ls -F # Покажет содержимое текущей директории (файлы и папки)
-          ls -F scripts/ # Покажет содержимое папки scripts/
 
       - name: Update version
         if: steps.check_changes.outputs.SHOULD_PUBLISH == 'true'
