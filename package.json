@@ -30,6 +30,7 @@
     "test": "vitest run",
     "ci:publish": "changeset publish"
   },
+  "files": ["dist", "package.json", "README.md", "CHANGELOG.md"],
   "keywords": [],
   "author": "",
   "license": "ISC",
